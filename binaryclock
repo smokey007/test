@@ -170,3 +170,8 @@ echo -e "\t$hl1 $hr1 $ml1 $mr1 $sl1 $sr1"
 echo
 sleep 1
 done
+
+
+echo
+echo
+echo"HI"
