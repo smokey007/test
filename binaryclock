@@ -1,0 +1,172 @@
+#!/bin/bash
+
+while :
+do
+	HOUR=`date +%H`
+	MIN=`date +%M`
+	SEC=`date +%S`
+
+if [$HOUR -ge 20]
+then
+hl2=1
+else
+hl2=0
+fi
+
+if [$HOUR -ge 10 -a $HOUR -le 19 ]
+then
+hl1=1
+else
+hl1=0
+fi
+
+HOUR1='exp $HOUR % 10'
+
+if [ $HOUR1 -ge 8 ]
+then
+hr8=1
+else
+hr8=0
+fi
+
+if [ $hour1 -ge 4 -a $HOUR1 -le 7 ]
+then
+hr4=1
+else
+hr4=0
+fi
+
+if [ \( $HOUR1 -ge 2 -a $HOUR1 -le 3 \) -o \( $HOUR1 -ge 6 -a $HOUR1 -le 7 \) ]
+then
+hr2=1
+else
+hr2=0
+fi
+
+if [ `expr $HOUR1 %2` -eq 1 ]
+then
+hr1=1
+else
+hr1=0
+fi
+
+if [ $MIN -ge 40 ]
+then
+ml4=1
+else
+ml4=0
+fi
+
+if [ $MIN -ge 20 -a $MIN -le39 ]
+then
+ml2=1
+else
+ml2=0
+fi
+
+MIN10=`expr $MIN /10`
+
+if [ `expr $MIN10 % 2` -eq 1 ]
+then
+ml1=1
+else
+ml1=0
+fi
+
+MIN1=`expr $MIN %10`
+
+if [ $MIN1 -ge8 ]
+then
+mr8=1
+else
+mr8=0
+fi
+
+if [ $MIN1 -ge 4 -a $MIN1 -le 7 ]
+then
+mr4=1
+else
+mr4=0
+fi
+
+if [ \( $MIN1 -ge -a $MIN1 -le 3 \) -o \( $MIN1 -ge 6 -a $MIN1 -le 7 \) ]
+then
+mr2=1
+else
+mr2=0
+fi
+
+if [ `expr $MIN1 % 2` -eq 1 ]
+then
+mr1=1
+else
+mr1=0
+fi
+
+SEC10=`expr $sec / 10`
+
+if [ $SEC10 -ge 4 ]
+then
+sl4=1
+else
+sl4=0
+fi
+
+if [ $SEC10 -ge 2 -a $SEC10 -le 3 ]
+then
+sl2=1
+else
+sl2=0
+fi
+
+if [ `expr $SEC10 % 2` -eq 1 ]
+then
+sl1=1
+else
+sl1=0
+fi
+
+SEC1=`expr $SEC % 10`
+
+if [ $SEC1 -ge 8 ]
+then
+sr8=1
+else
+sr8=0
+fi
+
+if [ $SEC1 -ge 4 -a $SEC1 -le 7 ]
+then
+sr4=1
+else
+sr4=0
+fi
+
+if [ \( $SEC1 -ge 2 -a $SEC1 -le 3 \) -o \( $SEC1 -ge 6 -a $SEC1 -le 7 \) ]
+then
+sr2=1
+else
+sr2=0
+fi
+
+if [ `expr $SEC1 % 2` -eq 1 ]
+then
+sr1=1
+else
+sr1=0
+fi
+
+printf '\033[32m'
+
+clear
+echo
+echo
+echo "The time is $HOUR:$MIN:$SEC"
+echo
+echo -e "\t  $hr8   $mr8   $sr8"
+echo -e "\t  $hr4 $ml4 $mr4 $sl4 $sr4"
+echo -e "\t$hl2 $hr2 $ml2 $mr2 $sl2 $sr2"
+echo -e "\t$hl1 $hr1 $ml1 $mr1 $sl1 $sr1"
+echo
+sleep 1
+done
